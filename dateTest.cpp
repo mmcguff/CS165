@@ -25,15 +25,6 @@ int main()
    cout << "number: ";
    cin  >> num;
 
-   // DEBUG CODE
-   //cout << endl;
-   //cout << "DEBUG: date.getDay(): " << date.getDay() << endl;
-   //cout << "DEBUG: date.getMonth(): " << date.getMonth() << endl;
-   //cout << "DEBUG: date.getYear(): " << date.getYear() << endl;
-   //cout << "DEBUG: newYears.getDay(): " << newYears.getDay() << endl;
-   //cout << "DEBUG: newYears.getMonth(): " << newYears.getMonth() << endl;
-   //cout << "DEBUG: newYears.getYear(): " << newYears.getYear() << endl;
-
    // difference
    cout << "\n--- difference ---\n";
    cout << "There are " << (date - newYears)
