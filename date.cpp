@@ -43,28 +43,28 @@ Date :: ~Date()
 
 int Date :: getDaysLeft() const
 {
-   Date tempDate;
+   // Needed to get the defaults. month == 1; day == 1; year == 2000;
+   Date defaults;
 
-   int tempDay = day;
+   int tempYear = year;
    int tempMonth = month;
+   int tempDay = day;
 
-   int tempYear = tempDate.getYear() + year;
-
-   for (int i = 0; tempYear > tempDate.getYear() + 1 || tempYear < tempDate.getYear() - 1; ++i)
+   for (int i = 0; tempYear > 1; i++)
    {
-      if (isLeapYear(tempDate.getYear() + i))
+      if (isLeapYear(defaults.getYear() + tempYear))
       {
-         tempYear--;
          tempDay += 366;
+         tempYear --;
       }
       else
       {
-         tempYear--;
          tempDay += 365;
+         tempYear --;
       }
    }
 
-   while (tempMonth < 14 )
+   while (tempMonth > 0)
    {
       switch (tempMonth)
       {
@@ -75,22 +75,28 @@ int Date :: getDaysLeft() const
          case 8:
          case 10:
          case 12:
-         case 13:
             tempDay += 31;
-            tempMonth++;
-            break;
-         case 2:
-            tempDay += 29;
-            tempMonth++;
             break;
          case 4:
          case 6:
          case 9:
          case 11:
             tempDay += 30;
-            tempMonth++;
             break;
+         case 2:
+            if (isLeapYear(defaults.getYear() + year))
+            {
+               tempDay += 29;
+               break;
+            }
+            else
+            {
+               tempDay += 28;
+               break;
+            }
       }
+
+      tempMonth--;
    }
 
    return tempDay;
