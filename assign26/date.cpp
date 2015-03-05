@@ -53,12 +53,12 @@ void Date::validateDate()
    {
       if (isLeapYear(year))
       {
-         day -= 365;    // If leap year, subtract 365. Day cannot be 0!
+         day -= 366;    // If leap year, subtract 365. Day cannot be 0!
          year++;        // Increment year by 1.
       }
       else
       {
-         day -= 364;    // If not leap year, subtract 364. Day cannot be 0!
+         day -= 365;    // If not leap year, subtract 364. Day cannot be 0!
          year++;        // increment year by 1.
       }
    }
