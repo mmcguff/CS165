@@ -45,6 +45,7 @@ Date::~Date()
  *****************************************************/
 void Date::validateDate()
 {
+
    // Handle days first.
    
    // Check to make sure you can't adjust to years first
@@ -65,6 +66,7 @@ void Date::validateDate()
    // Offset by one for the day(s) already there.
    while (day <= -364)
    {
+
       if (isLeapYear(year))
       {
          day += 365;    // If leap year, add 365. Day cannot be 0!
@@ -378,7 +380,7 @@ int Date::getDaysLeft() const
             tempDay += 30;
             break;
          case 2:
-            if (isLeapYear(2000 + year))
+            if (isLeapYear(2000 + year - 1))
             {
                tempDay += 29;
                break;
