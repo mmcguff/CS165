@@ -1,0 +1,18 @@
+
+# mkdir assign14.tar.dir 2>> assign14.compile 
+
+# cp assign14.tar assign14.tar.dir/tar.tar 2>> assign14.compile 
+
+# tar -xf  assign14.tar.dir/tar.tar -C assign14.tar.dir 2>> assign14.compile >> assign14.compile 
+
+# make a.out -C assign14.tar.dir 2>> assign14.compile >> assign14.compile 
+make: Entering directory `/home/dew11005/cs165/assign14/assign14.tar.dir'
+g++ -c moveTest.cpp
+g++ -c move.cpp
+g++ -o a.out moveTest.o move.o
+tar -cf assign14.tar *.h *.cpp makefile
+make: Leaving directory `/home/dew11005/cs165/assign14/assign14.tar.dir'
+
+# mv assign14.tar.dir/a.out /tmp/testbed/compileDir7aafbc51-9fc3-41a2-a02c-ad8ae647f3e3/assign14 2>> assign14.compile >> assign14.compile 
+
+# rm -rf assign14.tar.dir 2>> assign14.compile 

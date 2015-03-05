@@ -1,0 +1,18 @@
+
+# mkdir assign22.tar.dir 2>> assign22.compile 
+
+# cp assign22.tar assign22.tar.dir/tar.tar 2>> assign22.compile 
+
+# tar -xf  assign22.tar.dir/tar.tar -C assign22.tar.dir 2>> assign22.compile >> assign22.compile 
+
+# make a.out -C assign22.tar.dir 2>> assign22.compile >> assign22.compile 
+make: Entering directory `/home/dew11005/cs165/assign22/assign22.tar.dir'
+g++ -c dateTest.cpp
+g++ -c date.cpp
+g++ -o a.out dateTest.o date.o
+tar -cf assign22.tar *.h *.cpp makefile
+make: Leaving directory `/home/dew11005/cs165/assign22/assign22.tar.dir'
+
+# mv assign22.tar.dir/a.out /tmp/testbed/compileDir8bbaeb5b-ba55-45b3-a89a-a734cc610f08/assign22 2>> assign22.compile >> assign22.compile 
+
+# rm -rf assign22.tar.dir 2>> assign22.compile 
