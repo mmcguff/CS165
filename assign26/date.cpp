@@ -45,7 +45,6 @@ Date::~Date()
  *****************************************************/
 void Date::validateDate()
 {
-
    // Handle days first.
    
    // Check to make sure you can't adjust to years first
@@ -79,7 +78,90 @@ void Date::validateDate()
       }
    }
    
-   // If not years, check to see if months can be adjusted
+   // Make sure the day is not less than 0 .... day <= 0
+   while (day <=  0)
+   {
+      if (day == 0)
+      {
+         month--;                // Start by decrementing the month by one.
+         switch(month)           // Check the month after decrement to assign days.
+         {
+            case 0:              // While no month 0. Reset to December. 
+               month = 12;       // Set month to December
+               day = 31;        // Add 31 to the days.
+               year--;           // When month hits 0, decrement the year by 1.
+               break;
+            case 1:              // Months with 31 days.
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+               day = 31;
+               break;
+            case 4:              // Months with 30 days.
+            case 6:
+            case 9:
+            case 11:
+               day = 30;
+               break;
+            case 2:              // February is special 28 or 29 days. 
+               if (isLeapYear(2000 + year))
+               {
+                  day = 29;
+                  break;
+               }
+               else
+               {
+                  day = 28;
+                  break;
+               }
+         }
+      }
+      else
+      {
+         month--;                // Start by decrementing the month by one.
+         
+         switch(month)           // Check the month after decrement to assign days.
+         {
+            case 0:              // While no month 0. Reset to December. 
+               month = 12;       // Set month to December
+               day += 31;        // Add 31 to the days.
+               year--;           // When month hits 0, decrement the year by 1.
+               break;
+            case 1:              // Months with 31 days.
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+               day += 31;
+               break;
+            case 4:              // Months with 30 days.
+            case 6:
+            case 9:
+            case 11:
+               day+= 30;
+               break;
+            case 2:              // February is special 28 or 29 days. 
+               if (isLeapYear(2000 + year))
+               {
+                  day += 29;
+                  break;
+               }
+               else
+               {
+                  day += 28;
+                  break;
+               }
+         }
+
+      }
+   }
+   
+    // If not years, check to see if months can be adjusted
    while (day > 31)
    {
       switch (month)
@@ -120,88 +202,7 @@ void Date::validateDate()
             break;
       }
    }
-   
-   // Make sure the day is not less than 0 .... day <= 0
-   while (day <=  0)
-   {
-      if (day == 0)
-      {
-         month--;                // Start by decrementing the month by one.
-         switch(month)           // Check the month after decrement to assign days.
-         {
-            case 0:              // While no month 0. Reset to December. 
-               month = 12;       // Set month to December
-               day = 31;        // Add 31 to the days.
-               year--;           // When month hits 0, decrement the year by 1.
-            case 1:              // Months with 31 days.
-            case 3:
-            case 5:
-            case 7:
-            case 8:
-            case 10:
-            case 12:
-               day = 31;
-               break;
-            case 4:              // Months with 30 days.
-            case 6:
-            case 9:
-            case 11:
-               day = 30;
-               break;
-            case 2:              // February is special 28 or 29 days. 
-               if (isLeapYear(2000 + year))
-               {
-                  day = 29;
-                  break;
-               }
-               else
-               {
-                  day = 28;
-                  break;
-               }
-         }
-      }
-      else
-      {
-         
-         month--;                // Start by decrementing the month by one.
-         
-         switch(month)           // Check the month after decrement to assign days.
-         {
-            case 0:              // While no month 0. Reset to December. 
-               month = 12;       // Set month to December
-               day += 31;        // Add 31 to the days.
-               year--;           // When month hits 0, decrement the year by 1.
-            case 1:              // Months with 31 days.
-            case 3:
-            case 5:
-            case 7:
-            case 8:
-            case 10:
-            case 12:
-               day += 31;
-               break;
-            case 4:              // Months with 30 days.
-            case 6:
-            case 9:
-            case 11:
-               day+= 30;
-               break;
-            case 2:              // February is special 28 or 29 days. 
-               if (isLeapYear(2000 + year))
-               {
-                  day += 29;
-                  break;
-               }
-               else
-               {
-                  day += 28;
-                  break;
-               }
-         }
-      }
-   }
-   
+
    // Check months next
    // Make sure the month does not overflow
    while(month > 12)
@@ -216,7 +217,7 @@ void Date::validateDate()
       year--;                 // If month below or at 0, decrement the year by
       month += 12;            // one and add 12.  
    }
-   
+
    // Assert the values just to make sure they are alright.
    assert(year > 1753 && year < 2500);
    assert(month > 0 && month < 13);
