@@ -1,0 +1,38 @@
+
+# mkdir assign26.tar.dir 2>> assign26.compile 
+
+# cp assign26.tar assign26.tar.dir/tar.tar 2>> assign26.compile 
+
+# tar -xf  assign26.tar.dir/tar.tar -C assign26.tar.dir 2>> assign26.compile >> assign26.compile 
+
+# make a.out -C assign26.tar.dir 2>> assign26.compile >> assign26.compile 
+make: Entering directory `/home/dew11005/cs165/assign26/assign26.tar.dir'
+c++ -c -g dateTest.cpp
+c++ -c -g date.cpp
+c++ -c -g operators.cpp
+c++ -o a.out dateTest.o date.o operators.o
+tar -cf assign26.tar *.h *.cpp makefile
+make: Leaving directory `/home/dew11005/cs165/assign26/assign26.tar.dir'
+
+# mv assign26.tar.dir/a.out /tmp/testbed/compileDirc9f270c6-af5f-4ef5-92f4-543856758f61/assign26 2>> assign26.compile >> assign26.compile 
+
+# rm -rf assign26.tar.dir 2>> assign26.compile 
+
+# mkdir assign26.tar.dir 2>> assign26.compile 
+
+# cp assign26.tar assign26.tar.dir/tar.tar 2>> assign26.compile 
+
+# tar -xf  assign26.tar.dir/tar.tar -C assign26.tar.dir 2>> assign26.compile >> assign26.compile 
+
+# make a.out -C assign26.tar.dir 2>> assign26.compile >> assign26.compile 
+make: Entering directory `/home/dew11005/cs165/assign26/assign26.tar.dir'
+c++ -c -g dateTest.cpp
+c++ -c -g date.cpp
+c++ -c -g operators.cpp
+c++ -o a.out dateTest.o date.o operators.o
+tar -cf assign26.tar *.h *.cpp makefile
+make: Leaving directory `/home/dew11005/cs165/assign26/assign26.tar.dir'
+
+# mv assign26.tar.dir/a.out /tmp/testbed/compileDir102c819d-ffe3-4e1b-b452-702f70a04fba/assign26 2>> assign26.compile >> assign26.compile 
+
+# rm -rf assign26.tar.dir 2>> assign26.compile 
