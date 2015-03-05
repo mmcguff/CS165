@@ -1,8 +1,8 @@
-### Assignment 26, The Gauntlet I
+### Assignment 27, The Gauntlet II
 ### the main rule
 a.out: dateTest.o date.o operators.o
 	c++ -o a.out dateTest.o date.o operators.o
-	tar -cf assign26.tar *.h *.cpp makefile
+	tar -cf assign27.tar *.h *.cpp makefile
 
 ### for the object files
 dateTest.o: dateTest.cpp date.h
