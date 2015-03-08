@@ -31,7 +31,7 @@ class Date
       // Operators
       // Insertion and Extraction Operators
       friend ostream & operator << (ostream & out, const Date & rhs);
-      friend istream & operator >> (istream & out, Date & rhs);
+      friend istream & operator >> (istream & in, Date & rhs);
 
       // Arithmetic Operators
       Date operator + (const Date & rhs);
