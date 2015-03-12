@@ -1,35 +1,36 @@
 #include "piece.h"
-char Space::getLetter()
-{
-  return (' ');
-}
 
-char King::getLetter()
+char King::getLetter() const
 {
   return (isWhite) ? 'k' : 'K';
 }
 
-char Queen::getLetter()
+char Queen::getLetter() const
 {
   return (isWhite) ? 'q' : 'Q';
 }
 
-char Rook::getLetter()
+char Rook::getLetter() const
 {
   return (isWhite) ? 'r' : 'R';
 }
 
-char Knight::getLetter()
+char Knight::getLetter() const
 {
   return (isWhite) ? 'n' : 'N';
 }
 
-char Bishop::getLetter()
+char Bishop::getLetter() const
 {
   return (isWhite) ? 'b' : 'B';
 }
 
-char Pawn::getLetter()
+char Pawn::getLetter() const
 {
   return (isWhite) ? 'p' : 'P';
+}
+
+char Space::getLetter() const
+{
+  return (' ');
 }

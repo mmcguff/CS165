@@ -23,7 +23,7 @@ using namespace std;
  * OUT << PIECE
  * Insertion operator for the piece
  ********************************************/
-ostream & operator << (ostream & out, Piece & rhs)
+ostream & operator << (ostream & out, const Piece & rhs)
 {
    out << rhs.getLetter();
    return out;
