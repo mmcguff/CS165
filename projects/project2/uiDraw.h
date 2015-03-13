@@ -1,15 +1,3 @@
-/***********************************************************************
- * Header File:
- *    User Interface Draw : put pixels on the screen
- * Author:
- *    Br. Helfrich
- * Summary:
- *    This is the code necessary to draw on the screen. We have a collection
- *    of procedural functions here because each draw function does not
- *    retain state. In other words, they are verbs (functions), not nouns
- *    (variables) or a mixture (objects)
- ************************************************************************/
-
 #ifndef UI_DRAW_H
 #define UI_DRAW_H
 
@@ -38,24 +26,25 @@ void drawNumber(const Point & topLeft, unsigned int number);
 void drawText(const Point & topLeft, const char * text);
 
 /************************************************************************
+ * ROTATE
+ * Rotate a given point (point) around a given origin (center) by a given
+ * number of degrees (angle).
+ *************************************************************************/
+void rotate(Point & point, const Point & origin, int rotation);
+
+/************************************************************************
  * DRAW RECTANGLE
  * Draw a rectangle on the screen centered on a given point (center) of
  * a given size (width, height), and at a given orientation (rotation)
  * measured in degrees (0 - 360)
  *************************************************************************/
-void drawRect(const Point & center, int width, int height, int rotation);
+void drawRect(const Point & center, char width, char height, int rotation);
 
 /************************************************************************
  * DRAW CIRCLE
  * Draw a circle from a given location (center) of a given size (radius).
  *************************************************************************/
-void drawCircle(const Point & center, int radius);
-
-/************************************************************************
- * DRAW POLYGON
- * Draw a polygon from a given location (center) of a given size (radius).
- *************************************************************************/
-void drawPolygon(const Point & center, int radius, int points, int rotation);
+void drawCircle(const Point & center, char radius, int points, int rotation);
 
 /************************************************************************
  * DRAW LINE

@@ -6,8 +6,7 @@
 #     author one
 #     author two
 # Summary:
-#     Enter a brief description of your program here! If you do any
-#     extra credit, this would be a good place to describe it.
+#     Enter a brief description of your program here! 
 #
 #     Estimated:  0.0 hrs
 #     Actual:     0.0 hrs
@@ -19,13 +18,10 @@
 #    pong:         The playable game
 #    uiTest:       Simple driver program for the drawing interface
 ###############################################################
-pong : pong.o uiInteract.o uiDraw.o point.o
-	g++ -o pong pong.o uiInteract.o uiDraw.o point.o -lglut -lGLU
-	tar -cf pong.tar *.cpp *.h makefile
-
-uiTest : uiTest.o uiDraw.o uiInteract.o point.o
-	g++ -o uiTest uiTest.o uiDraw.o uiInteract.o point.o -lglut -lGLU
-
+skeet : skeet.o uiInteract.o uiDraw.o point.o velocity.o bird.o bullet.o rifle.o
+	g++ -o skeet skeet.o uiInteract.o uiDraw.o point.o velocity.o bird.o rifle.o bullet.o -lglut -lGL -lGLU
+	tar -cf skeet.tar *.cpp *.h makefile
+	skeet
 ###############################################################
 # Individual files
 #    uiDraw.o      Draw polygons on the screen and do all OpenGL graphics
@@ -37,24 +33,33 @@ uiTest : uiTest.o uiDraw.o uiInteract.o point.o
 uiInteract.o : uiInteract.cpp uiInteract.h point.h
 	g++ -c uiInteract.cpp
 
+bullet.o: bullet.cpp bullet.h
+	g++ -c bullet.cpp
+
+bird.o: bird.cpp bird.h
+	g++ -c bird.cpp
+
+rifle.o: rifle.cpp rifle.h
+	g++ -c rifle.cpp
+
+velocity.o : velocity.h velocity.cpp point.h
+	g++ -c velocity.cpp
+
 uiDraw.o : uiDraw.cpp uiDraw.h point.h
 	g++ -c uiDraw.cpp
 
 point.o : point.cpp point.h
 	g++ -c point.cpp
 
-uiTest.o : uiTest.cpp point.h uiDraw.h uiInteract.h
-	g++ -c uiTest.cpp
-
-pong.o : pong.cpp uiDraw.h uiInteract.h point.h
-	g++ -c pong.cpp
+# all classes used in skeet 
+skeet.o : skeet.cpp point.h uiDraw.h velocity.h rifle.h bird.h bird.h bullet.h uiInteract.h
+	g++ -c skeet.cpp
 
 
 ###############################################################
 # General rules
 ###############################################################
 clean :
-	rm uiTest pong *.o *.tar
+	rm -f skeet *.o *.tar *.cpp~ makefile~ *.compile *.h~
 
-all :  uiTest pong
 

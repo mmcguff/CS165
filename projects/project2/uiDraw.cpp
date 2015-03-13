@@ -168,11 +168,11 @@ void rotate(Point & point, const Point & origin, int rotation)
    tmp.setY(point.getY() - origin.getY());
 
    // find the new values
-   point.setX( (tmp.getX() * cosA - 
-                tmp.getY() * sinA) +
-               origin.getX());
-   point.setY((tmp.getX() * sinA +
-               tmp.getY() * cosA) +
+   point.setX(static_cast<int> (tmp.getX() * cosA -
+                                tmp.getY() * sinA) +
+              origin.getX());
+   point.setY(static_cast<int> (tmp.getX() * sinA +
+                                tmp.getY() * cosA) +
               origin.getY());
 }
 
@@ -185,7 +185,7 @@ void rotate(Point & point, const Point & origin, int rotation)
  *         height    Vertical size
  *         rotation  Orientation
  *************************************************************************/
-void drawRect(const Point & center, int width, int height, int rotation)
+void drawRect(const Point & center, char width, char height, int rotation)
 {
    Point tl(false /*check*/); // top left
    Point tr(false /*check*/); // top right 
@@ -229,36 +229,12 @@ void drawRect(const Point & center, int width, int height, int rotation)
  * Draw a circle from a given location (center) of a given size (radius).
  *  INPUT   center   Center of the circle
  *          radius   Size of the circle
- *************************************************************************/
-void drawCircle(const Point & center, int radius)
-{
-   assert(radius > 1.0);
-   const double increment = 1.0 / (double)radius;
-
-   // begin drawing
-   glBegin(GL_LINE_LOOP);
-
-   // go around the circle
-   for (double radians = 0; radians < M_PI * 2.0; radians += increment)
-      glVertex2f(center.getX() + (radius * cos(radians)),
-                 center.getY() + (radius * sin(radians)));
-   
-   // complete drawing
-   glEnd();
-   
-}
-
-/************************************************************************
- * DRAW POLYGON
- * Draw a POLYGON from a given location (center) of a given size (radius).
- *  INPUT   center   Center of the polygon
- *          radius   Size of the polygon
  *          points   How many points will we draw it.  Larger the number,
  *                   the more line segments we will use
  *          rotation True circles are rotation independent.  However, if you
- *                   are drawing a 3-sided polygon (triangle), this matters!
+ *                   are drawing a 3-sided circle (triangle), this matters!
  *************************************************************************/
-void drawPolygon(const Point & center, int radius, int points, int rotation)
+void drawCircle(const Point & center, char radius, int points, int rotation)
 {
    // begin drawing
    glBegin(GL_LINE_LOOP);
@@ -268,8 +244,8 @@ void drawPolygon(const Point & center, int radius, int points, int rotation)
    for (double i = 0; i < 2 * M_PI; i += (2 * M_PI) / points)
    {
       Point temp(false /*check*/);
-      temp.setX(center.getX() + (radius * cos(i)));
-      temp.setY(center.getY() + (radius * sin(i)));
+      temp.setX(center.getX() + static_cast<int>(radius * cos(i)));
+      temp.setY(center.getY() + static_cast<int>(radius * sin(i)));
       rotate(temp, center, rotation);
       glVertex2f(temp.getX(), temp.getY());
    }
@@ -294,7 +270,7 @@ void drawLine(const Point & begin, const Point & end)
    glVertex2f(begin.getX(), begin.getY());
    glVertex2f(  end.getX(),   end.getY());
 
-   // complete drawing
+   // complete drawing.
    glEnd();
 }
 
@@ -326,6 +302,9 @@ void drawDot(const Point & point)
  *************************************************************************/
 void drawShip(const Point & center, int rotation)
 {
+   // Get ready, get set...
+   glBegin(GL_LINE_STRIP);
+
    Point bow(      center); // front
    Point stern(    center); // back
    Point starboard(center); // right
@@ -349,13 +328,13 @@ void drawShip(const Point & center, int rotation)
 
    //Finally draw the rectangle
    glBegin(GL_LINE_STRIP);
-   glColor3f(1.0 /* red % */, 0.0 /* green % */, 0.0 /* blue % */);
    glVertex2f(      bow.getX(),       bow.getY());
    glVertex2f(starboard.getX(), starboard.getY());
    glVertex2f(    stern.getX(),     stern.getY());
    glVertex2f(     port.getX(),      port.getY());
    glVertex2f(      bow.getX(),       bow.getY());
-   glColor3f(1.0, 1.0, 1.0); // reset to white
+   
+   // Done!  OK, that was a bit too dramatic
    glEnd();   
 }
 

@@ -17,12 +17,10 @@ using namespace std;
 class Ball
 {
 public:
-   Ball() : sides(3), rotation(0), pt() { }
-
-   // this is just for test purposes.  Don't make member variables public!
-   Point pt;          // location of the polygon on the screen
-   int sides;         // number of sides in the polygon.  Initially three
-   int rotation;      // the angle or orientation of the polygon
+   Ball() : sides(3), rotation(0), pt() { };
+   Point pt;      // this is just for testing purposes.  Don't
+   int sides;     // make member variables public!  Please!
+   int rotation;
 };
 
 /*************************************
@@ -32,11 +30,10 @@ public:
  * engine will wait until the proper amount of
  * time has passed and put the drawing on the screen.
  **************************************/
-void callBack(const Interface *pUI, void * p)
+void callBack(const Interface *pUI, void *p)
 {
-   Ball * pBall = (Ball *)p;  // cast the void pointer into a known type
-
-   // move the polygon
+   Ball *pBall = (Ball *)p;
+   
    if (pUI->isRight())
       pBall->pt.addX(1);
    if (pUI->isLeft())
@@ -46,7 +43,7 @@ void callBack(const Interface *pUI, void * p)
    if (pUI->isDown())
       pBall->pt.addY(-1);
    
-   // use the space bar to change the number of sides.
+   // use the space bar to change the number os sides.
    if (pUI->isSpace())
       pBall->sides++;
    if (pBall->sides == 12)
@@ -56,7 +53,7 @@ void callBack(const Interface *pUI, void * p)
    pBall->rotation++;
    
    // draw
-   drawPolygon(pBall->pt, /*position*/
+   drawCircle(pBall->pt, /*position*/
               20, /* radius */
               pBall->sides /*segments*/,
               pBall->rotation /*rotation*/);
@@ -75,9 +72,9 @@ float Point::yMax =  200.0;
  *********************************/
 int main(int argc, char ** argv)
 {
-   Interface ui(argc, argv, "Test");    // initialize OpenGL
-   Ball ball;                           // initialize the game state
-   ui.run(callBack, &ball);             // set everything into action
+   Interface ui(argc, argv, "Test");
+   Ball ball;
+   ui.run(callBack, &ball);
 
    return 0;
 }

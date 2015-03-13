@@ -8,6 +8,8 @@
  *    the location and the bounds.
  ************************************************************************/
 
+
+
 #include "point.h"
 #include <cassert>
 
@@ -15,8 +17,7 @@
  * POINT : CONSTRUCTOR WITH X,Y
  * Initialize the point to the passed position
  *****************************************/
-Point::Point(float x, float y) : x(0.0), y(0.0),
-                                 check(false), dead(false), wrap(false)
+Point::Point(float x, float y) : x(0.0), y(0.0), check(false), dead(false)
 {
    setX(x);
    setY(y);
@@ -29,22 +30,8 @@ Point::Point(float x, float y) : x(0.0), y(0.0),
 void Point::setX(float x)
 {
    assert(xMin < xMax);
-
-   // wrap as necessary
-   if (wrap)
-   {
+   if (!check || (x >= xMin && x <= xMax))
       this->x = x;
-      while (this->x > xMax)
-         this->x -= (xMax - xMin);
-      while (this->x < xMin)
-         this->x += (xMax - xMin);
-   }
-
-   // trivial non-checking assignment
-   else if (!check || (x >= xMin && x <= xMax))
-      this->x = x;
-
-   // of the screen
    else
       dead = true;
 }
@@ -58,7 +45,6 @@ const Point & Point :: operator = (const Point & rhs)
    y        = rhs.y;
    check    = rhs.check;
    dead     = rhs.dead;
-   wrap     = rhs.wrap;
 
    return *this;
 }
@@ -70,26 +56,12 @@ const Point & Point :: operator = (const Point & rhs)
 void Point::setY(float y)
 {
    assert(yMin < yMax);
-
-   // wrap as necessary
-   if (wrap)
-   {
+   if (!check || (y >= yMin && y <= yMax))
       this->y = y;
-      while (this->y > yMax)
-         this->y -= (yMax - yMin);
-      while (this->y < yMin)
-         this->y += (yMax - yMin);
-   }
-
-   // trivial non-checking assignment
-   else if (!check || (y >= yMin && y <= yMax))
-      this->y = y;
-
-   // of the screen
    else
       dead = true;
-   
 }
+
 
 /******************************************
  * POINT insertion
