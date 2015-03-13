@@ -106,6 +106,8 @@ void Chess::write()
       else
          cout << "Error saving file\n";
    }
+
+
 }
 
 bool Chess::writeFile()
@@ -128,7 +130,6 @@ bool Chess::writeFile()
 
 void Chess::displayOptions()
 {
-   //DISPLAY the options
    cout << "Options: \n"
         << "?       Display these options\n"
         << "b2b4    Specify a move using the Smith notation\n"
