@@ -21,7 +21,7 @@ class Board
     void freeBoard();
 
     // Getters
-    bool getTest()           const { return test;};
+    bool getTest() const { return test;};
 
     // Setters
     bool setTest() { test = (!test); return test;};
