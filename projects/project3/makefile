@@ -15,7 +15,7 @@ FLAGS=-g
 ###############################################################
 chess : chess.o move.o position.o board.o piece.o
 	g++ $(FLAGS) -o chess $^
-	#tar -cf chess.tar *.cpp *.h makefile
+	tar -cf chess.tar *.cpp *.h makefile
 
 moveTest : moveTest.o move.o position.o
 	g++ $(FLAGS) -o moveTest $^

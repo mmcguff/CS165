@@ -1,19 +1,3 @@
-/***********************************************************************
-* Program:
-*    Assignment 35, Pure virtual functions
-*    Brother Helfrich, CS165
-* Author:
-*    your name
-* Summary: 
-*    We are to take Assignment 3.4 one step further and make the
-*    base class an abstract class. This means that we are to make
-*    a new derrived class called Space and Piece will be abstract.
-*
-*    Estimated:  0.0 hrs   
-*    Actual:     0.0 hrs
-*      Please describe briefly what was the most difficult part
-************************************************************************/
-
 #include <iostream>
 #include <cassert>
 #include "piece.h"
